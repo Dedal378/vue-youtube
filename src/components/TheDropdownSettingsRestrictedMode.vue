@@ -10,7 +10,10 @@ defineProps({
 })
 const emits = defineEmits(['select-menu', 'select-option'])
 const selectOption = ($event) => {
-  emits('select-option', { name: 'modeId', value: $event.target.checked })
+  const enabled = $event.target.checked
+  const value = { enabled, text: enabled ? 'On' : 'Off' }
+
+  emits('select-option', { name: 'mode', value })
 }
 </script>
 
@@ -30,7 +33,7 @@ const selectOption = ($event) => {
       <input
         type="checkbox"
         @input="selectOption($event)"
-        :checked="selectedOptions.modeId"
+        :checked="selectedOptions.mode.enabled"
       />
     </div>
   </section>

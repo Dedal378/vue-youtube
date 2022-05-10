@@ -6,7 +6,8 @@ import TheDropdownSettingsMain from './TheDropdownSettingsMain.vue'
 import TheDropdownSettingsAppearance from './TheDropdownSettingsAppearance.vue'
 import TheDropdownSettingsLanguage from './TheDropdownSettingsLanguage.vue'
 import TheDropdownSettingsLocation from './TheDropdownSettingsLocation.vue'
-import TheDropdownSettingsRestrictedMode from './TheDropdownSettingsRestrictedMode.vue'
+import TheDropdownSettingsRestrictedMode
+  from './TheDropdownSettingsRestrictedMode.vue'
 
 const dropDownSettingsButton = ref(null)
 const dropDownSettings = ref(null)
@@ -26,11 +27,20 @@ const dropdownClasses = reactive([
 const selectedOptions = reactive({
   theme: {
     id: 0,
-    text: 'Use device theme',
+    text: 'Device theme',
   },
-  languageId: 0,
-  locationId: 0,
-  modeId: false,
+  language: {
+    id: 0,
+    text: 'English',
+  },
+  location: {
+    id: 0,
+    text: 'United States',
+  },
+  mode: {
+    enabled: false,
+    text: 'Off',
+  },
 })
 
 const menu = computed(() => {

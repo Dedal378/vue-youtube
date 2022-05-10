@@ -13,14 +13,13 @@ defineProps({
 const emits = defineEmits(['select-menu', 'select-option'])
 const languages = ref([
   'English',
-  'Russian',
-  'Russian',
-  'Russian',
-  'Russian',
+  'Belarusian',
+  'Ukraine',
+  'German',
   'Russian',
 ])
-const selectOption = (languageId) => {
-  emits('select-option', { name: 'languageId', value: languageId })
+const selectOption = (language) => {
+  emits('select-option', { name: 'language', value: language })
 }
 </script>
 
@@ -33,10 +32,10 @@ const selectOption = (languageId) => {
   <section class="py-2">
     <ul class="max-h-96 overflow-auto">
       <DropdownSettingsListItem
-        @click.stop="selectOption(languageIdx)"
+        @click.stop="selectOption({ id: languageIdx, text: language })"
         v-for="(language, languageIdx) in languages"
         :key="languageIdx"
-        :active="languageIdx === selectedOptions.languageId"
+        :active="languageIdx === selectedOptions.language.id"
         :label="language"
       />
     </ul>

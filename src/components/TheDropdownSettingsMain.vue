@@ -2,7 +2,7 @@
 import { reactive } from 'vue'
 import DropdownSettingsListItem from './DropdownSettingsListItem.vue'
 
-defineProps({
+const props = defineProps({
   selectedOptions: {
     type: [Object, Number, String],
     required: false,
@@ -11,15 +11,17 @@ defineProps({
 })
 const emits = defineEmits(['select-menu', 'select-option'])
 const listItems = reactive([
-  { id: 'appearance', label: 'Appearance: Device theme', icon: 'theme', withSubMenu: true },
-  { id: 'language', label: 'Language: English', icon: 'language', withSubMenu: true },
-  { id: 'location', label: 'Location: United States', icon: 'location', withSubMenu: true },
+  {
+    id: 'appearance', label: 'Appearance: ' + props.selectedOptions.theme.text, icon: 'theme', withSubMenu: true,
+  },
+  { id: 'language', label: 'Language: ' + props.selectedOptions.language.text, icon: 'language', withSubMenu: true },
+  { id: 'location', label: 'Location: ' + props.selectedOptions.location.text, icon: 'location', withSubMenu: true },
   { id: 'settings', label: 'Settings', icon: 'settings', withSubMenu: false },
   { id: 'data', label: 'Your data in YouTube', icon: 'data', withSubMenu: false },
   { id: 'help', label: 'Help', icon: 'help', withSubMenu: false },
   { id: 'feedback', label: 'Send feedback', icon: 'feedback', withSubMenu: false },
   { id: 'shortcuts', label: 'Keyboard shortcuts', icon: 'shortcut', withSubMenu: false },
-  { id: 'mode', label: 'Restricted mode: Off', icon: null, withSubMenu: true },
+  { id: 'mode', label: 'Restricted mode: ' + props.selectedOptions.mode.text, icon: null, withSubMenu: true },
 ])
 
 const selectMenu = (listItem) => {

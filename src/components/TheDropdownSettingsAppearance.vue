@@ -11,7 +11,7 @@ defineProps({
   },
 })
 const emits = defineEmits(['select-menu', 'select-option'])
-const themes = ref(['Use device theme', 'Dark theme', 'Light theme'])
+const themes = ref(['Device theme', 'Dark theme', 'Light theme'])
 const selectOption = (theme) => {
   emits('select-option', { name: 'theme', value: theme })
 }
