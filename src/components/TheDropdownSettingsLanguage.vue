@@ -10,14 +10,8 @@ defineProps({
     default: 0,
   },
 })
-const emits = defineEmits(['select-menu', 'select-option'])
-const languages = ref([
-  'English',
-  'Belarusian',
-  'Ukraine',
-  'German',
-  'Russian',
-])
+const emits = defineEmits(['close', 'select-option'])
+const languages = ref(['English', 'Belarusian', 'Ukraine', 'German', 'Russian'])
 const selectOption = (language) => {
   emits('select-option', { name: 'language', value: language })
 }
@@ -25,7 +19,7 @@ const selectOption = (language) => {
 
 <template>
   <DropdownSettingsHeader
-    @back="$emit('select-menu', 'main')"
+    @back="$emit('close')"
     title="Choose your language"
   />
 

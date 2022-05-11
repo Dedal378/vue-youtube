@@ -10,7 +10,7 @@ defineProps({
     default: 0,
   },
 })
-const emits = defineEmits(['select-menu', 'select-option'])
+const emits = defineEmits(['close', 'select-option'])
 const locations = ref(['United States', 'Belarus', 'Ukraine', 'Russia'])
 const selectOption = (location) => {
   emits('select-option', { name: 'location', value: location })
@@ -20,7 +20,7 @@ const selectOption = (location) => {
 <template>
   <DropdownSettingsHeader
     title="Choose your location"
-    @back="$emit('select-menu', 'main')"
+    @back="$emit('close')"
   />
 
   <section class="py-2">

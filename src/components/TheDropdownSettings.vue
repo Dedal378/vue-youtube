@@ -6,13 +6,12 @@ import TheDropdownSettingsMain from './TheDropdownSettingsMain.vue'
 import TheDropdownSettingsAppearance from './TheDropdownSettingsAppearance.vue'
 import TheDropdownSettingsLanguage from './TheDropdownSettingsLanguage.vue'
 import TheDropdownSettingsLocation from './TheDropdownSettingsLocation.vue'
-import TheDropdownSettingsRestrictedMode
-  from './TheDropdownSettingsRestrictedMode.vue'
+import TheDropdownSettingsRestrictedMode from './TheDropdownSettingsRestrictedMode.vue'
 
 const dropDownSettingsButton = ref(null)
 const dropDownSettings = ref(null)
 const isOpen = ref(false)
-const selectedMenu = ref('main')
+const selectedMenu = ref(null)
 const dropdownClasses = reactive([
   'absolute',
   'top-9',
@@ -45,23 +44,36 @@ const selectedOptions = reactive({
 
 const menu = computed(() => {
   const menuComponentNames = {
-    main: TheDropdownSettingsMain,
     appearance: TheDropdownSettingsAppearance,
     language: TheDropdownSettingsLanguage,
     location: TheDropdownSettingsLocation,
     mode: TheDropdownSettingsRestrictedMode,
   }
 
-  return menuComponentNames[selectedMenu.value]
+  return selectedMenu.value ? menuComponentNames[selectedMenu.value.id] : null
 })
+const menuItems = computed(() => [
+  { id: 'appearance', label: 'Appearance: ' + selectedOptions.theme.text, icon: 'theme', withSubMenu: true },
+  { id: 'language', label: 'Language: ' + selectedOptions.language.text, icon: 'language', withSubMenu: true },
+  { id: 'location', label: 'Location: ' + selectedOptions.location.text, icon: 'location', withSubMenu: true },
+  { id: 'settings', label: 'Settings', icon: 'settings', withSubMenu: false },
+  { id: 'data', label: 'Your data in YouTube', icon: 'data', withSubMenu: false },
+  { id: 'help', label: 'Help', icon: 'help', withSubMenu: false },
+  { id: 'feedback', label: 'Send feedback', icon: 'feedback', withSubMenu: false },
+  { id: 'shortcuts', label: 'Keyboard shortcuts', icon: 'shortcut', withSubMenu: false },
+  { id: 'mode', label: 'Restricted mode: ' + selectedOptions.mode.text, icon: null, withSubMenu: true },
+])
 
-const showSelectedMenu = selMenu => {
-  selectedMenu.value = selMenu
+const selectMenu = (menuItem) => {
+  selectedMenu.value = menuItem
   dropDownSettings.value.focus()
+}
+const closeMenu = () => {
+  selectMenu(null)
 }
 const close = () => {
   isOpen.value = false
-  setTimeout(() => (selectedMenu.value = 'main'), 100)
+  setTimeout(() => closeMenu, 100)
 }
 const open = () => {
   isOpen.value = true
@@ -77,7 +89,7 @@ watch(isOpen, () => {
   nextTick(() => isOpen.value && dropDownSettings.value.focus())
 })
 onMounted(() => {
-  window.addEventListener('click', ev => {
+  window.addEventListener('click', (ev) => {
     if (!dropDownSettingsButton.value.contains(ev.target)) {
       close()
     }
@@ -94,7 +106,10 @@ onMounted(() => {
         ref="dropDownSettingsButton"
         class="relative p-2 focus:outline-none"
       >
-        <BaseIcon name="dotsVertical" class="h-5 w-5" />
+        <BaseIcon
+          name="dotsVertical"
+          class="h-5 w-5"
+        />
       </button>
     </BaseTooltip>
 
@@ -114,10 +129,17 @@ onMounted(() => {
         tabindex="-1"
       >
         <component
-          @select-menu="showSelectedMenu"
+          v-if="selectedMenu"
+          @close="closeMenu"
           @select-option="selectOption"
           :is="menu"
           :selected-options="selectedOptions"
+        />
+
+        <TheDropdownSettingsMain
+          v-else
+          @select-menu="selectMenu"
+          :menu-items="menuItems"
         />
       </div>
     </transition>

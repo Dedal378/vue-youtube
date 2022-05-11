@@ -1,33 +1,19 @@
 <script setup>
-import { reactive } from 'vue'
 import DropdownSettingsListItem from './DropdownSettingsListItem.vue'
 
-const props = defineProps({
-  selectedOptions: {
+defineProps({
+  menuItems: {
     type: [Object, Number, String],
     required: false,
     default: 0,
   },
 })
-const emits = defineEmits(['select-menu', 'select-option'])
-const listItems = reactive([
-  {
-    id: 'appearance', label: 'Appearance: ' + props.selectedOptions.theme.text, icon: 'theme', withSubMenu: true,
-  },
-  { id: 'language', label: 'Language: ' + props.selectedOptions.language.text, icon: 'language', withSubMenu: true },
-  { id: 'location', label: 'Location: ' + props.selectedOptions.location.text, icon: 'location', withSubMenu: true },
-  { id: 'settings', label: 'Settings', icon: 'settings', withSubMenu: false },
-  { id: 'data', label: 'Your data in YouTube', icon: 'data', withSubMenu: false },
-  { id: 'help', label: 'Help', icon: 'help', withSubMenu: false },
-  { id: 'feedback', label: 'Send feedback', icon: 'feedback', withSubMenu: false },
-  { id: 'shortcuts', label: 'Keyboard shortcuts', icon: 'shortcut', withSubMenu: false },
-  { id: 'mode', label: 'Restricted mode: ' + props.selectedOptions.mode.text, icon: null, withSubMenu: true },
-])
+const emits = defineEmits(['select-menu'])
 
-const selectMenu = (listItem) => {
-  // listItem.withSubMenu && emit('select-menu', listItem.id)
-  if (listItem.withSubMenu) {
-    emits('select-menu', listItem.id)
+const selectMenu = (menuItem) => {
+  // menuItem.withSubMenu && emit('select-menu', menuItem.id)
+  if (menuItem.withSubMenu) {
+    emits('select-menu', menuItem)
   }
 }
 </script>
@@ -36,22 +22,22 @@ const selectMenu = (listItem) => {
   <section class="py-2 border-b">
     <ul>
       <DropdownSettingsListItem
-        @click.stop="selectMenu(listItem)"
-        v-for="listItem in listItems.slice(0, 8)"
-        :key="listItem.label"
-        :icon="listItem.icon"
-        :label="listItem.label"
-        :with-sub-menu="listItem.withSubMenu"
+        @click.stop="selectMenu(menuItem)"
+        v-for="menuItem in menuItems.slice(0, 8)"
+        :key="menuItem.label"
+        :icon="menuItem.icon"
+        :label="menuItem.label"
+        :with-sub-menu="menuItem.withSubMenu"
       />
     </ul>
   </section>
   <section class="py-2">
     <ul>
       <DropdownSettingsListItem
-        @click.stop="$emit('select-menu', listItems[8].id)"
-        :label="listItems[8].label"
-        :icon="listItems[8].icon"
-        :with-sub-menu="listItems[8].withSubMenu"
+        @click.stop="$emit('select-menu', menuItems[8])"
+        :icon="menuItems[8].icon"
+        :label="menuItems[8].label"
+        :with-sub-menu="menuItems[8].withSubMenu"
       />
     </ul>
   </section>

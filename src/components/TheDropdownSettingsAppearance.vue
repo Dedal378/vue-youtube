@@ -10,7 +10,7 @@ defineProps({
     default: 0,
   },
 })
-const emits = defineEmits(['select-menu', 'select-option'])
+const emits = defineEmits(['close', 'select-option'])
 const themes = ref(['Device theme', 'Dark theme', 'Light theme'])
 const selectOption = (theme) => {
   emits('select-option', { name: 'theme', value: theme })
@@ -19,7 +19,7 @@ const selectOption = (theme) => {
 
 <template>
   <DropdownSettingsHeader
-    @back="$emit('select-menu', 'main')"
+    @back="$emit('close')"
     title="Appearance"
   />
 
