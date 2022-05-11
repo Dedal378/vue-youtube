@@ -16,14 +16,10 @@ const classes = [
   'focus:outline-none',
 ]
 
-const props = defineProps(['query', 'queryModifiers'])
+defineProps(['query'])
 const emits = defineEmits(['update:query'])
 
 const updateQuery = (query) => {
-  if (props.queryModifiers['no-spaces']) {
-    query = query.replace(/\s+/g, ' ').trim()
-  }
-
   emits('update:query', query)
 }
 

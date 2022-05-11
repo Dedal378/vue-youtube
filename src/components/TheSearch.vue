@@ -22,13 +22,14 @@ const keywords = ref([
   'new york accent',
 ])
 
-const results = computed(() => keywords.value.filter((result) => result.includes(query.value)))
+const trimmedQuery = () => query.value.replace(/\s+/g, ' ').trim()
+const results = computed(() => keywords.value.filter((result) => result.includes(trimmedQuery())))
 </script>
 
 <template>
   <div class="flex w-full mr-2">
     <div class="relative flex w-full">
-      <TheSearchInput v-model:query.no-spaces="query" />
+      <TheSearchInput v-model:query="query" />
       <TheSearchResults
         v-show="query"
         :results="results"
