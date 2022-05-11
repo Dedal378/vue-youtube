@@ -1,11 +1,15 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
-defineProps({
+const props = defineProps({
   results: {
     type: Array,
     required: false,
     default: null,
+  },
+  activeResultId: {
+    type: [Number, String],
+    required: true,
   },
 })
 
@@ -22,7 +26,6 @@ const classes = ref([
   'select-none',
   'truncate',
 ])
-const itemClasses = ref(['hover:bg-gray-100', 'text-black', 'px-3', 'py-1'])
 const reportLinkClasses = ref([
   'w-full',
   'inline-block',
@@ -32,17 +35,25 @@ const reportLinkClasses = ref([
   'text-gray-500',
   'hover:text-black pr-2',
 ])
+const itemClasses = computed(() => {
+  return (resultId) => [
+    resultId === props.activeResultId ? 'bg-gray-100' : 'hover:bg-gray-100',
+    'text-black',
+    'px-3',
+    'py-1',
+  ]
+})
 </script>
 
 <template>
   <div :class="classes">
     <ul>
       <li
-        v-for="result in results"
-        :key="result"
-        :class="itemClasses"
+        v-for="(text, id) in results"
+        :key="text"
+        :class="itemClasses(id)"
       >
-        {{ result }}
+        {{ text }}
       </li>
     </ul>
 
