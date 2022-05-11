@@ -8,7 +8,7 @@ const props = defineProps({
     default: null,
   },
   activeResultId: {
-    type: [Number, String],
+    type: [null, Number, String],
     required: true,
   },
 })

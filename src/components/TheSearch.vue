@@ -1,5 +1,5 @@
 <script setup>
-import { computed, inject, ref, watch } from 'vue'
+import { inject, ref, watch } from 'vue'
 import TheSearchInput from './TheSearchInput.vue'
 import TheSearchButton from './TheSearchButton.vue'
 import TheSearchResults from './TheSearchResults.vue'
@@ -7,6 +7,8 @@ import TheSearchResults from './TheSearchResults.vue'
 const emits = defineEmits(['update-search-query'])
 const { searchQuery } = inject('searchQuery')
 const query = ref(searchQuery)
+const activeQuery = ref(searchQuery)
+const results = ref([])
 const activeSearchResultId = ref(null)
 const isSearchResultsShown = ref(false)
 const keywords = ref([
@@ -26,10 +28,16 @@ const keywords = ref([
   'new york accent',
 ])
 
-const results = computed(() => {
-  if (!query.value) return []
-  return keywords.value.filter((result) => result.includes(trimmedQuery()))
-})
+const updateSearchResults = () => {
+  activeSearchResultId.value = null
+  activeQuery.value = query.value
+
+  if (query.value === '') {
+    results.value = []
+  } else {
+    results.value = keywords.value.filter((result) => result.includes(trimmedQuery()))
+  }
+}
 const trimmedQuery = () => query.value.replace(/\s+/g, ' ').trim()
 const toggleSearchResults = (isSearchInputActive) => {
   isSearchResultsShown.value = isSearchInputActive && results.value.length
@@ -43,6 +51,15 @@ const makePreviousSearchResultActive = () => {
   } else {
     activeSearchResultId.value--
   }
+
+  updateQueryWithSearchResults()
+}
+const handlePreviousSearchResult = () => {
+  if (isSearchResultsShown.value) {
+    makePreviousSearchResultActive()
+  } else {
+    toggleSearchResults(true)
+  }
 }
 const makeNextSearchResultActive = () => {
   if (activeSearchResultId.value === null) {
@@ -52,13 +69,8 @@ const makeNextSearchResultActive = () => {
   } else {
     activeSearchResultId.value++
   }
-}
-const handlePreviousSearchResult = () => {
-  if (isSearchResultsShown.value) {
-    makePreviousSearchResultActive()
-  } else {
-    toggleSearchResults(true)
-  }
+
+  updateQueryWithSearchResults()
 }
 const handleNextSearchResult = () => {
   if (isSearchResultsShown.value) {
@@ -66,6 +78,13 @@ const handleNextSearchResult = () => {
   } else {
     toggleSearchResults(true)
   }
+}
+const updateQueryWithSearchResults = () => {
+  const hasActiveSearchResult = activeSearchResultId.value !== null
+
+  query.value = hasActiveSearchResult
+    ? results.value[activeSearchResultId.value]
+    : activeQuery.value
 }
 
 watch(query, (query) => {
@@ -78,9 +97,11 @@ watch(query, (query) => {
     <div class="relative flex w-full">
       <TheSearchInput
         v-model:query="query"
+        @update:query="updateSearchResults"
         @change-state="toggleSearchResults"
         @keyup.up="handlePreviousSearchResult"
         @keyup.down="handleNextSearchResult"
+        @keydown.up.prevent
         :has-results="results.length"
       />
       <TheSearchResults
