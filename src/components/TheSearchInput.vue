@@ -9,6 +9,7 @@ import { onMounted, ref } from 'vue'
 import BaseIcon from './BaseIcon.vue'
 
 const searchInput = ref(null)
+const isActive = ref(false)
 const classes = [
   'px-3',
   'w-full',
@@ -22,12 +23,32 @@ const classes = [
   'focus:outline-none',
 ]
 
-defineProps(['query'])
+const props = defineProps(['query', 'hasResults'])
 const emits = defineEmits(['update:query', 'change-state'])
 
+const setState = (state) => {
+  isActive.value = state
+  emits('change-state', state)
+}
 const updateQuery = (query) => {
   emits('update:query', query)
-  emits('change-state', true)
+  setState(isActive.value)
+}
+const removeSelection = () => {
+  const end = searchInput.value.length
+  searchInput.value.setSelectionRange(end, end)
+}
+const handleEsc = () => {
+  removeSelection()
+
+  if (isActive.value && props.hasResults) {
+    setState(false)
+
+    // isActive.value = false
+    // emits('change-state', isActive.value)
+  } else {
+    searchInput.value.blur()
+  }
 }
 
 onMounted(() => {
@@ -41,12 +62,12 @@ onMounted(() => {
   <div class="relative w-full">
     <input
       @input="updateQuery($event.target.value)"
-      @blur="$emit('change-state', false)"
-      @focus="$emit('change-state', true)"
-      @keyup.esc="$emit('change-state', false)"
+      @click="setState(true)"
+      @focus="setState(true)"
+      @blur="setState(false)"
+      @keyup.esc="handleEsc"
       :class="classes"
       :value="query"
-      v-bind="$attrs"
       ref="searchInput"
       placeholder="Search"
       type="text"

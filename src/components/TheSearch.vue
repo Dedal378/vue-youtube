@@ -42,6 +42,7 @@ const toggleSearchResults = (isSearchInputActive) => {
       <TheSearchInput
         v-model:query="query"
         @change-state="toggleSearchResults"
+        :has-results="results.length"
       />
       <TheSearchResults
         v-show="isSearchResultsShown"
