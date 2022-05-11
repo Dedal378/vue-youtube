@@ -21,21 +21,30 @@ const keywords = ref([
   'new york giants live stream',
   'new york accent',
 ])
+const isSearchResultsShown = ref(false)
 
 const trimmedQuery = () => query.value.replace(/\s+/g, ' ').trim()
 const results = computed(() => {
-  if (!query.value) return []
+  if (!query.value) {
+    return []
+  }
 
   return keywords.value.filter((result) => result.includes(trimmedQuery()))
 })
+const toggleSearchResults = (isSearchInputActive) => {
+  isSearchResultsShown.value = isSearchInputActive && results.value.length
+}
 </script>
 
 <template>
   <div class="flex w-full mr-2">
     <div class="relative flex w-full">
-      <TheSearchInput v-model:query="query" />
+      <TheSearchInput
+        v-model:query="query"
+        @change-state="toggleSearchResults"
+      />
       <TheSearchResults
-        v-show="results.length"
+        v-show="isSearchResultsShown"
         :results="results"
       />
     </div>

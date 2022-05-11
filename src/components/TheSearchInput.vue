@@ -1,3 +1,9 @@
+<script>
+export default {
+  inheritAttrs: false,
+}
+</script>
+
 <script setup>
 import { onMounted, ref } from 'vue'
 import BaseIcon from './BaseIcon.vue'
@@ -17,10 +23,11 @@ const classes = [
 ]
 
 defineProps(['query'])
-const emits = defineEmits(['update:query'])
+const emits = defineEmits(['update:query', 'change-state'])
 
 const updateQuery = (query) => {
   emits('update:query', query)
+  emits('change-state', true)
 }
 
 onMounted(() => {
@@ -34,8 +41,12 @@ onMounted(() => {
   <div class="relative w-full">
     <input
       @input="updateQuery($event.target.value)"
+      @blur="$emit('change-state', false)"
+      @focus="$emit('change-state', true)"
+      @keyup.esc="$emit('change-state', false)"
       :class="classes"
       :value="query"
+      v-bind="$attrs"
       ref="searchInput"
       placeholder="Search"
       type="text"
