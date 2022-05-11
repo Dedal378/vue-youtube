@@ -1,10 +1,9 @@
 <script setup>
 import { onBeforeMount, onMounted, ref } from 'vue'
-import TheSearch from './TheSearch.vue'
 import BaseIcon from './BaseIcon.vue'
 import BaseTooltip from './BaseTooltip.vue'
 
-const emits = defineEmits(['close', 'update-search-query'])
+const emits = defineEmits(['close'])
 const rootEl = ref(null)
 
 const onClick = (event) => {
@@ -41,7 +40,7 @@ onBeforeMount(() => {
       </button>
     </BaseTooltip>
 
-    <TheSearch @update-search-query="$emit('update-search-query', $event)" />
+    <slot />
 
     <BaseTooltip
       text="Search with your voice"

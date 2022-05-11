@@ -1,10 +1,8 @@
 <script setup>
 import { ref } from 'vue'
-import TheSearch from './TheSearch.vue'
 import BaseIcon from './BaseIcon.vue'
 import BaseTooltip from './BaseTooltip.vue'
 
-defineEmits(['update-search-query'])
 const classes = ref([
   'hidden',
   'sm:flex',
@@ -23,7 +21,7 @@ const classes = ref([
 
 <template>
   <div :class="classes">
-    <TheSearch @update-search-query="$emit('update-search-query', $event)" />
+    <slot />
 
     <BaseTooltip text="Search with your voice">
       <button class="py-2 focus:outline-none">

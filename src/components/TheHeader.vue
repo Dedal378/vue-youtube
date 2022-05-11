@@ -6,6 +6,7 @@ import LogoMain from './LogoMain.vue'
 import BaseIcon from './BaseIcon.vue'
 import BaseTooltip from './BaseTooltip.vue'
 import ButtonLogin from './ButtonLogin.vue'
+import TheSearch from './TheSearch.vue'
 import TheSearchMobile from './TheSearchMobile.vue'
 import TheSearchMain from './TheSearchMain.vue'
 
@@ -63,12 +64,13 @@ onMounted(() => {
     <TheSearchMobile
       v-if="isMobileSearchShown"
       @close="closeMobileSearch"
-      @update-search-query="searchQuery = $event"
-    />
-    <TheSearchMain
-      v-else
-      @update-search-query="searchQuery = $event"
-    />
+    >
+      <TheSearch @update-search-query="searchQuery = $event" />
+    </TheSearchMobile>
+
+    <TheSearchMain v-else>
+      <TheSearch @update-search-query="searchQuery = $event" />
+    </TheSearchMain>
 
     <!--right-->
     <div :class="classesSignIn">
