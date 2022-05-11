@@ -23,7 +23,11 @@ const keywords = ref([
 ])
 
 const trimmedQuery = () => query.value.replace(/\s+/g, ' ').trim()
-const results = computed(() => keywords.value.filter((result) => result.includes(trimmedQuery())))
+const results = computed(() => {
+  if (!query.value) return []
+
+  return keywords.value.filter((result) => result.includes(trimmedQuery()))
+})
 </script>
 
 <template>
@@ -31,7 +35,7 @@ const results = computed(() => keywords.value.filter((result) => result.includes
     <div class="relative flex w-full">
       <TheSearchInput v-model:query="query" />
       <TheSearchResults
-        v-show="query"
+        v-show="results.length"
         :results="results"
       />
     </div>
