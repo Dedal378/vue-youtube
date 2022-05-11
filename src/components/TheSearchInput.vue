@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import BaseIcon from './BaseIcon.vue'
 
 const searchInput = ref(null)
@@ -44,11 +44,28 @@ const handleEsc = () => {
     searchInput.value.blur()
   }
 }
+const clear = () => {
+  searchInput.value.focus()
+  updateQuery('')
+}
+const onKeydown = (ev) => {
+  const isInputFocused = searchInput.value === document.activeElement
+
+  if (ev.code === 'Slash' && !isInputFocused) {
+    ev.preventDefault()
+    searchInput.value.focus()
+  }
+}
 
 onMounted(() => {
   if (window.innerWidth < 640) {
     searchInput.value.focus()
   }
+
+  document.addEventListener('keydown', onKeydown)
+})
+onBeforeUnmount(() => {
+  document.removeEventListener('keydown', onKeydown)
 })
 </script>
 
@@ -69,7 +86,7 @@ onMounted(() => {
 
     <button
       v-show="query"
-      @click="updateQuery('')"
+      @click="clear"
       class="absolute top-0 right-0 h-full px-3 focus:outline-none"
     >
       <BaseIcon
