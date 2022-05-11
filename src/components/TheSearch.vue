@@ -1,10 +1,12 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, inject, ref, watch } from 'vue'
 import TheSearchInput from './TheSearchInput.vue'
 import TheSearchButton from './TheSearchButton.vue'
 import TheSearchResults from './TheSearchResults.vue'
 
-const query = ref('')
+const emits = defineEmits(['update-search-query'])
+const { searchQuery } = inject('searchQuery')
+const query = ref(searchQuery)
 const keywords = ref([
   'new york giants',
   'new york alicia keys',
@@ -34,6 +36,10 @@ const results = computed(() => {
 const toggleSearchResults = (isSearchInputActive) => {
   isSearchResultsShown.value = isSearchInputActive && results.value.length
 }
+
+watch(query, (query) => {
+  emits('update-search-query', query)
+})
 </script>
 
 <template>
