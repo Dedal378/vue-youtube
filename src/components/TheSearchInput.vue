@@ -1,9 +1,3 @@
-<script>
-export default {
-  inheritAttrs: false,
-}
-</script>
-
 <script setup>
 import { onMounted, ref } from 'vue'
 import BaseIcon from './BaseIcon.vue'
