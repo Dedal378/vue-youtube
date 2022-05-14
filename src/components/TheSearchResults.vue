@@ -37,7 +37,7 @@ const reportLinkClasses = ref([
 ])
 const itemClasses = computed(() => {
   return (resultId) => [
-    resultId === props.activeResultId ? 'bg-gray-100' : 'hover:bg-gray-100',
+    resultId === props.activeResultId ? 'bg-gray-100' : 'bg-transparent',
     'text-black',
     'px-3',
     'py-1',
@@ -52,6 +52,8 @@ const itemClasses = computed(() => {
         v-for="(text, id) in results"
         :key="text"
         :class="itemClasses(id)"
+        @mouseenter="$emit('search-result-mouseenter', id)"
+        @mouseleave="$emit('search-result-mouseleave')"
       >
         {{ text }}
       </li>

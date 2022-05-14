@@ -3,8 +3,8 @@ import { reactive } from 'vue'
 import SidebarSection from './SidebarSection.vue'
 import SidebarNavItem from './SidebarNavItem.vue'
 import SidebarSectionHeading from './SidebarSectionHeading.vue'
-import ButtonLogin from './ButtonLogin.vue'
-import TheFooter from './TheFooter.vue'
+import ButtonLogin from '../ui/ButtonLogin.vue'
+import TheFooter from '../TheFooter.vue'
 
 const listItems = reactive([
   { label: 'Home', icon: 'home', isActive: true },

@@ -1,6 +1,6 @@
 <script setup>
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
-import BaseIcon from './BaseIcon.vue'
+import BaseIcon from '../ui/BaseIcon.vue'
 import VideoItemDropdownListItem from './VideoItemDropdownListItem.vue'
 
 const videoItemDropdown = ref(null)

@@ -106,6 +106,8 @@ watch(query, (query) => {
       />
       <TheSearchResults
         v-show="isSearchResultsShown"
+        @search-result-mouseenter="activeSearchResultId = $event"
+        @search-result-mouseleave="activeSearchResultId = null"
         :results="results"
         :active-result-id="activeSearchResultId"
       />

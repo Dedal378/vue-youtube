@@ -1,5 +1,5 @@
 <script setup>
-import DropdownSettingsListItem from './DropdownSettingsListItem.vue'
+import DropdownSettingsListItem from './dropdown/DropdownSettingsListItem.vue'
 
 defineProps({
   menuItems: {

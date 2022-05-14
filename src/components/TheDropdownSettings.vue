@@ -1,7 +1,7 @@
 <script setup>
 import { computed, nextTick, onMounted, reactive, ref, watch } from 'vue'
-import BaseIcon from './BaseIcon.vue'
-import BaseTooltip from './BaseTooltip.vue'
+import BaseIcon from './ui/BaseIcon.vue'
+import BaseTooltip from './ui/BaseTooltip.vue'
 import TheDropdownSettingsMain from './TheDropdownSettingsMain.vue'
 import TheDropdownSettingsAppearance from './TheDropdownSettingsAppearance.vue'
 import TheDropdownSettingsLanguage from './TheDropdownSettingsLanguage.vue'

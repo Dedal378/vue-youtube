@@ -1,6 +1,6 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-import BaseIcon from './BaseIcon.vue'
+import BaseIcon from './ui/BaseIcon.vue'
 
 const searchInput = ref(null)
 const isActive = ref(false)

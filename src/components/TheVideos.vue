@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue'
-import VideoItem from './VideoItem.vue'
+import VideoItem from './video/VideoItem.vue'
 
 const props = defineProps({
   isSidebarOpen: {

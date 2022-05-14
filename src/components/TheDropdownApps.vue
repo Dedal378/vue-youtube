@@ -1,8 +1,8 @@
 <script setup>
 import { nextTick, onMounted, reactive, ref, watch } from 'vue'
-import BaseIcon from './BaseIcon.vue'
-import DropdownAppsListItem from './DropdownAppsListItem.vue'
-import BaseTooltip from './BaseTooltip.vue'
+import BaseIcon from './ui/BaseIcon.vue'
+import DropdownAppsListItem from './dropdown/DropdownAppsListItem.vue'
+import BaseTooltip from './ui/BaseTooltip.vue'
 
 const dropDownAppsButton = ref(null)
 const dropDownApps = ref(null)

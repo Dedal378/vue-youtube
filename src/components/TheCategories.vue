@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
-import CategoryItem from './CategoryItem.vue'
+import CategoryItem from './ui/CategoryItem.vue'
 
 const props = defineProps({
   isSidebarOpen: {

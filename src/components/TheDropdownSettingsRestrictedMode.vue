@@ -1,5 +1,5 @@
 <script setup>
-import DropdownSettingsHeader from './DropdownSettingsHeader.vue'
+import DropdownSettingsHeader from './dropdown/DropdownSettingsHeader.vue'
 
 defineProps({
   selectedOptions: {

@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
-import BaseIcon from './BaseIcon.vue'
+import BaseIcon from '../ui/BaseIcon.vue'
 
 const props = defineProps({
   icon: {

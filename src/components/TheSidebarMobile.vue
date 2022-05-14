@@ -1,8 +1,8 @@
 <script setup>
 import { ref, toRefs, watch, nextTick } from 'vue'
-import BaseIcon from './BaseIcon.vue'
-import LogoMain from './LogoMain.vue'
-import SidebarContent from './SidebarContent.vue'
+import BaseIcon from './ui/BaseIcon.vue'
+import LogoMain from './ui/LogoMain.vue'
+import SidebarContent from './sidebar/SidebarContent.vue'
 import TheSidebarMobileOverlay from './TheSidebarMobileOverlay.vue'
 
 const props = defineProps({

@@ -1,6 +1,6 @@
 <script setup>
 import { computed, reactive } from 'vue'
-import SidebarCompactNavItem from './SidebarCompactNavItem.vue'
+import SidebarCompactNavItem from './sidebar/SidebarCompactNavItem.vue'
 
 const navItems = reactive([
   { label: 'Home', icon: 'home', isActive: true },

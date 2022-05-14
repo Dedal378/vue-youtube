@@ -1,6 +1,6 @@
 <script setup>
-import BaseIcon from './BaseIcon.vue'
-import BaseTooltip from './BaseTooltip.vue'
+import BaseIcon from './ui/BaseIcon.vue'
+import BaseTooltip from './ui/BaseTooltip.vue'
 import { ref } from 'vue'
 
 const classes = ref([

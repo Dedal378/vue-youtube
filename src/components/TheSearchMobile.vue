@@ -1,7 +1,7 @@
 <script setup>
 import { onBeforeMount, onMounted, ref } from 'vue'
-import BaseIcon from './BaseIcon.vue'
-import BaseTooltip from './BaseTooltip.vue'
+import BaseIcon from './ui/BaseIcon.vue'
+import BaseTooltip from './ui/BaseTooltip.vue'
 
 const emits = defineEmits(['close'])
 const rootEl = ref(null)

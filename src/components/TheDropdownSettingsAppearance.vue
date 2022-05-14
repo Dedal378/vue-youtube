@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
-import DropdownSettingsListItem from './DropdownSettingsListItem.vue'
-import DropdownSettingsHeader from './DropdownSettingsHeader.vue'
+import DropdownSettingsListItem from './dropdown/DropdownSettingsListItem.vue'
+import DropdownSettingsHeader from './dropdown/DropdownSettingsHeader.vue'
 
 defineProps({
   selectedOptions: {

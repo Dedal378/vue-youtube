@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue'
-import SidebarContent from './SidebarContent.vue'
+import SidebarContent from './sidebar/SidebarContent.vue'
 
 const classes = computed(() => [
   'w-64',

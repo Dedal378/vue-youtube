@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue'
-import BaseIcon from './BaseIcon.vue'
-import BaseTooltip from './BaseTooltip.vue'
+import BaseIcon from '../ui/BaseIcon.vue'
+import BaseTooltip from '../ui/BaseTooltip.vue'
 import VideoItemDropdown from './VideoItemDropdown.vue'
 
 const props = defineProps({
