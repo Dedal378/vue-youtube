@@ -128,8 +128,16 @@ onMounted(() => {
 
 <template>
   <div class="relative -mt-1 ml-auto">
-    <button @click="toggle" @keydown.esc="isOpen = false" :class="buttonClasses" ref="videoItemDropdownButton">
-      <BaseIcon name="dotsVertical" class="h-5 w-5" />
+    <button
+      @click="toggle"
+      @keydown.esc="isOpen = false"
+      :class="buttonClasses"
+      ref="videoItemDropdownButton"
+    >
+      <BaseIcon
+        name="dotsVertical"
+        class="h-5 w-5"
+      />
     </button>
 
     <transition
@@ -140,14 +148,35 @@ onMounted(() => {
       leave-from-class="transform opacity-100 scale-100"
       leave-to-class="transform opacity-0 scale-55"
     >
-      <div v-show="isOpen" @keydown.esc="isOpen = false" :class="dropdownClasses" ref="videoItemDropdown" tabindex="-1">
+      <div
+        v-show="isOpen"
+        @keydown.esc="isOpen = false"
+        :class="dropdownClasses"
+        ref="videoItemDropdown"
+        tabindex="-1"
+      >
         <section class="py-2">
           <ul>
-            <VideoItemDropdownListItem label="Add to queue" icon="menuVideo" />
-            <VideoItemDropdownListItem label="Add to queue" icon="menuVideo" />
-            <VideoItemDropdownListItem label="Add to queue" icon="menuVideo" />
-            <VideoItemDropdownListItem label="Add to queue" icon="menuVideo" />
-            <VideoItemDropdownListItem label="Add to queue" icon="menuVideo" />
+            <VideoItemDropdownListItem
+              label="Add to queue"
+              icon="menuVideo"
+            />
+            <VideoItemDropdownListItem
+              label="Add to queue"
+              icon="menuVideo"
+            />
+            <VideoItemDropdownListItem
+              label="Add to queue"
+              icon="menuVideo"
+            />
+            <VideoItemDropdownListItem
+              label="Add to queue"
+              icon="menuVideo"
+            />
+            <VideoItemDropdownListItem
+              label="Add to queue"
+              icon="menuVideo"
+            />
           </ul>
         </section>
       </div>

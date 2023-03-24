@@ -11,7 +11,10 @@ defineProps({
 
 <template>
   <div class="relative">
-    <img alt="image" :src="`https://picsum.photos/seed/image${index}/720/404`" />
+    <img
+      alt="image"
+      :src="`https://picsum.photos/seed/image${index}/720/404`"
+    />
 
     <VideoItemThumbnailButton icon="clock" label="Watch later" classTop="top-0" />
     <VideoItemThumbnailButton icon="menuVideo" label="Add to queue" classTop="top-8" />
