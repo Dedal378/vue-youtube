@@ -20,7 +20,8 @@ const classes = computed(() => {
 </script>
 
 <template>
-  <a :class="classes"
+  <a
+    :class="classes"
     href="#"
   >
     {{ category }}

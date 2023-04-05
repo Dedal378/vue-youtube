@@ -4,6 +4,7 @@ import icons from '../../icons.js'
 const props = defineProps({
   name: {
     type: String,
+    required: false
   },
 })
 const path = icons[props.name]

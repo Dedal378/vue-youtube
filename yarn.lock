@@ -3814,9 +3814,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-yuotube@workspace:.":
+"vue-youtube@workspace:.":
   version: 0.0.0-use.local
-  resolution: "vue-yuotube@workspace:."
+  resolution: "vue-youtube@workspace:."
   dependencies:
     "@vitejs/plugin-vue": ^4.1.0
     "@vue/cli-plugin-eslint": ~5.0.8

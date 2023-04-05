@@ -13,7 +13,8 @@ const classes = computed(() => {
 
 <template>
   <button :class="classes">
-    <BaseIcon name="user"
+    <BaseIcon
+      name="user"
       class="h-7 w-7 mr-2"
     />
     Sign in
