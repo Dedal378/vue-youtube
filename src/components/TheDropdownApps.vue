@@ -56,7 +56,8 @@ onMounted(() => {
       leave-from-class="transform opacity-100 scale-100"
       leave-to-class="transform opacity-0 scale-55"
     >
-      <div v-show="isOpen"
+      <div
+        v-show="isOpen"
         ref="dropDownApps"
         @keydown.esc="isOpen = false"
         tabindex="-1"
