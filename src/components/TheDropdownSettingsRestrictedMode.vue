@@ -33,7 +33,7 @@ const selectOption = ($event) => {
         @input="selectOption($event)"
         :checked="selectedOptions.mode.enabled"
         type="checkbox"
-      />
+      >
     </div>
 
     <template v-if="selectedOptions.mode.enabled">

@@ -14,7 +14,7 @@ const classes = [
   'rounded-bl-sm',
   'rounded-tl-sm',
   'focus:border-blue-700',
-  'focus:outline-none',
+  'focus:outline-none'
 ]
 
 const props = defineProps(['query', 'hasResults'])
@@ -72,6 +72,7 @@ onBeforeUnmount(() => {
 <template>
   <div class="relative w-full">
     <input
+      ref="searchInput"
       @input="updateQuery($event.target.value)"
       @click="setState(true)"
       @focus="setState(true)"
@@ -79,10 +80,9 @@ onBeforeUnmount(() => {
       @keyup.esc="handleEsc"
       :class="classes"
       :value="query"
-      ref="searchInput"
       placeholder="Search"
       type="text"
-    />
+    >
 
     <button
       v-show="query"

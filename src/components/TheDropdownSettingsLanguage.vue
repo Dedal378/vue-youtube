@@ -26,9 +26,9 @@ const selectOption = (language) => {
   <section class="py-2">
     <ul class="max-h-96 overflow-auto">
       <DropdownSettingsListItem
-        @click.stop="selectOption({ id: languageIdx, text: language })"
         v-for="(language, languageIdx) in languages"
         :key="languageIdx"
+        @click.stop="selectOption({ id: languageIdx, text: language })"
         :active="languageIdx === selectedOptions.language.id"
         :label="language"
       />

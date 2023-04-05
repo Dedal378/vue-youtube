@@ -21,7 +21,7 @@ const dropdownClasses = reactive([
   'w-72',
   'border',
   'border-t-0',
-  'focus:outline-none',
+  'focus:outline-none'
 ])
 const selectedOptions = reactive({
   theme: {
@@ -61,7 +61,7 @@ const menuItems = computed(() => [
   { id: 'help', label: 'Help', icon: 'help', withSubMenu: false },
   { id: 'feedback', label: 'Send feedback', icon: 'feedback', withSubMenu: false },
   { id: 'shortcuts', label: 'Keyboard shortcuts', icon: 'shortcut', withSubMenu: false },
-  { id: 'mode', label: 'Restricted mode: ' + selectedOptions.mode.text, icon: null, withSubMenu: true },
+  { id: 'mode', label: 'Restricted mode: ' + selectedOptions.mode.text, icon: null, withSubMenu: true }
 ])
 
 const selectMenu = (menuItem) => {
@@ -101,9 +101,9 @@ onMounted(() => {
   <div class="relative">
     <BaseTooltip text="Settings">
       <button
+        ref="dropDownSettingsButton"
         @click="toggle"
         @keydown.esc="isOpen = false"
-        ref="dropDownSettingsButton"
         class="relative p-2 focus:outline-none"
       >
         <BaseIcon
@@ -123,16 +123,16 @@ onMounted(() => {
     >
       <div
         v-show="isOpen"
+        ref="dropDownSettings"
         @keydown.esc="close"
         :class="dropdownClasses"
-        ref="dropDownSettings"
         tabindex="-1"
       >
         <component
+          :is="menu"
           v-if="selectedMenu"
           @close="closeMenu"
           @select-option="selectOption"
-          :is="menu"
           :selected-options="selectedOptions"
         />
 

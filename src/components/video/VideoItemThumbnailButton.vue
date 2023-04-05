@@ -30,7 +30,7 @@ const classes = computed(() => {
     'm-1',
     'p-1',
     props.classTop,
-    isBadgeShown.value ? 'rounded-r-sm' : 'rounded-sm',
+    isBadgeShown.value ? 'rounded-r-sm' : 'rounded-sm'
   ]
 })
 const badgeClasses = computed(() => {
@@ -48,7 +48,7 @@ const badgeClasses = computed(() => {
     'delay-100',
     'font-semibold',
     'rounded-l-sm',
-    isBadgeShown.value ? 'w-28' : 'w-0',
+    isBadgeShown.value ? 'w-28' : 'w-0'
   ]
 })
 
@@ -56,8 +56,13 @@ const toggleBadge = () => (isBadgeShown.value = !isBadgeShown.value)
 </script>
 
 <template>
-  <span :class="classes" @mouseenter="toggleBadge" @mouseleave="toggleBadge">
-    <BaseIcon :name="icon" class="h-5 w-5" />
+  <span @mouseenter="toggleBadge"
+    @mouseleave="toggleBadge"
+    :class="classes"
+  >
+    <BaseIcon :name="icon"
+      class="h-5 w-5"
+    />
     <span :class="badgeClasses">
       <span class="inline-block my-1.5 mx-3">{{ label }}</span>
     </span>

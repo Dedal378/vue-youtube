@@ -19,16 +19,16 @@ const selectOption = (location) => {
 
 <template>
   <DropdownSettingsHeader
-    title="Choose your location"
     @back="$emit('close')"
+    title="Choose your location"
   />
 
   <section class="py-2">
     <ul class="max-h-96 overflow-auto">
       <DropdownSettingsListItem
-        @click.stop="selectOption({ id: locationIdx, text: location})"
         v-for="(location, locationIdx) in locations"
         :key="locationIdx"
+        @click.stop="selectOption({ id: locationIdx, text: location})"
         :active="locationIdx === selectedOptions.location.id"
         :label="location"
       />

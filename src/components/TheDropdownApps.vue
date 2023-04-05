@@ -17,7 +17,7 @@ const dropdownClasses = reactive([
   'w-60',
   'border',
   'border-t-0',
-  'focus:outline-none',
+  'focus:outline-none'
 ])
 
 watch(isOpen, () => {
@@ -36,8 +36,15 @@ onMounted(() => {
 <template>
   <div class="relative">
     <BaseTooltip text="YouTube apps">
-      <button @click="isOpen = !isOpen" ref="dropDownAppsButton" class="relative p-2 focus:outline-none">
-        <BaseIcon name="viewGrid" class="h-5 w-5" />
+      <button
+        ref="dropDownAppsButton"
+        @click="isOpen = !isOpen"
+        class="relative p-2 focus:outline-none"
+      >
+        <BaseIcon
+          name="viewGrid"
+          class="h-5 w-5"
+        />
       </button>
     </BaseTooltip>
 
@@ -49,7 +56,12 @@ onMounted(() => {
       leave-from-class="transform opacity-100 scale-100"
       leave-to-class="transform opacity-0 scale-55"
     >
-      <div v-show="isOpen" @keydown.esc="isOpen = false" ref="dropDownApps" tabindex="-1" :class="dropdownClasses">
+      <div v-show="isOpen"
+        ref="dropDownApps"
+        @keydown.esc="isOpen = false"
+        tabindex="-1"
+        :class="dropdownClasses"
+      >
         <section class="py-2 border-b">
           <ul>
             <DropdownAppsListItem label="YouTube TV" />

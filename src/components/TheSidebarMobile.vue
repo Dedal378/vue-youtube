@@ -16,7 +16,7 @@ const mobileSidebar = ref(null)
 const { isOpen } = toRefs(props)
 
 watch(isOpen, () => {
-  nextTick(() => isOpen && mobileSidebar.value.focus()) //выражение выполнится, если isOpen не null и не undefined
+  nextTick(() => isOpen.value && mobileSidebar.value.focus()) //выражение выполнится, если isOpen не null и не undefined
 })
 </script>
 
@@ -29,7 +29,10 @@ watch(isOpen, () => {
     leave-from-class="opacity-100"
     leave-to-class="opacity-0"
   >
-    <TheSidebarMobileOverlay @click="$emit('close')" v-show="isOpen" />
+    <TheSidebarMobileOverlay
+      v-show="isOpen"
+      @click="$emit('close')"
+    />
   </transition>
 
   <transition
@@ -42,13 +45,15 @@ watch(isOpen, () => {
   >
     <aside
       v-show="isOpen"
+      ref="mobileSidebar"
       @keydown.esc="$emit('close')"
       tabindex="-1"
-      ref="mobileSidebar"
       class="fixed z-40 w-64 max-h-screen overflow-auto bg-white outline-none"
     >
       <section class="flex items-center p-4 border-b sticky top-0 bg-white">
-        <button @click="$emit('close')" class="ml-2 mr-6 focus:outline-none">
+        <button @click="$emit('close')"
+          class="ml-2 mr-6 focus:outline-none"
+        >
           <BaseIcon name="menu" />
         </button>
         <LogoMain />

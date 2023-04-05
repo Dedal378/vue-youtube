@@ -14,10 +14,18 @@ defineProps({
     <img
       alt="image"
       :src="`https://picsum.photos/seed/image${index}/720/404`"
-    />
+    >
 
-    <VideoItemThumbnailButton icon="clock" label="Watch later" classTop="top-0" />
-    <VideoItemThumbnailButton icon="menuVideo" label="Add to queue" classTop="top-8" />
+    <VideoItemThumbnailButton
+      icon="clock"
+      label="Watch later"
+      classTop="top-0"
+    />
+    <VideoItemThumbnailButton
+      icon="menuVideo"
+      label="Add to queue"
+      classTop="top-8"
+    />
 
     <span
       class="absolute opacity-100 group-hover:opacity-0 duration-500 bottom-0 right-0 bg-black text-white rounded-sm m-1 p-1 text-xs font-semibold"

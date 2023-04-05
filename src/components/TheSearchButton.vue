@@ -17,7 +17,7 @@ const classes = ref([
   'border-gray-300',
   'rounded-tr-sm',
   'rounded-br-sm',
-  'hover:bg-gray-200',
+  'hover:bg-gray-200'
 ])
 </script>
 

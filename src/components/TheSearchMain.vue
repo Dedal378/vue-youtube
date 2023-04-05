@@ -15,7 +15,7 @@ const classes = ref([
   'md:px-8',
   'lg:px-0',
   'lg:w-1/2',
-  'max-w-screen-md',
+  'max-w-screen-md'
 ])
 </script>
 

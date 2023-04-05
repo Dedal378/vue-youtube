@@ -15,8 +15,12 @@ defineProps({
 
 <template>
   <li>
-    <a class="flex items-center pl-5 pr-8 py-2 text-sm hover:bg-gray-200" href="#">
-      <BaseIcon :name="icon" class="h-5 w-5 mr-4 text-gray-400" />
+    <a class="flex items-center pl-5 pr-8 py-2 text-sm hover:bg-gray-200"
+      href="#"
+    >
+      <BaseIcon :name="icon"
+        class="h-5 w-5 mr-4 text-gray-400"
+      />
       <span>{{ label }}</span>
     </a>
   </li>

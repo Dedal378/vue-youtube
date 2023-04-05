@@ -24,7 +24,7 @@ const classes = ref([
   'shadow-md',
   'pt-4',
   'select-none',
-  'truncate',
+  'truncate'
 ])
 const reportLinkClasses = ref([
   'w-full',
@@ -33,14 +33,14 @@ const reportLinkClasses = ref([
   'text-xs',
   'italic',
   'text-gray-500',
-  'hover:text-black pr-2',
+  'hover:text-black pr-2'
 ])
 const itemClasses = computed(() => {
   return (resultId) => [
     resultId === props.activeResultId ? 'bg-gray-100' : 'bg-transparent',
     'text-black',
     'px-3',
-    'py-1',
+    'py-1'
   ]
 })
 </script>
@@ -51,9 +51,9 @@ const itemClasses = computed(() => {
       <li
         v-for="(text, id) in results"
         :key="text"
-        :class="itemClasses(id)"
         @mouseenter="$emit('search-result-mouseenter', id)"
         @mouseleave="$emit('search-result-mouseleave')"
+        :class="itemClasses(id)"
       >
         {{ text }}
       </li>

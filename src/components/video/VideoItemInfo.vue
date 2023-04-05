@@ -19,18 +19,27 @@ const summary = computed(() => {
 
 <template>
   <div class="flex items-start mt-3">
-    <img alt="image" class="mr-3 rounded-full w-9 h-9" :src="`https://picsum.photos/seed/avatar${index}/68`" />
+    <img alt="image"
+      class="mr-3 rounded-full w-9 h-9"
+      :src="`https://picsum.photos/seed/avatar${index}/68`"
+    >
 
     <div class="text-xs whitespace-nowrap">
       <span class="font-semibold text-gray-800">Video title {{ index }}</span>
 
       <div class="flex mt-1">
-        <BaseTooltip :text="channelName" top>
+        <BaseTooltip :text="channelName"
+          top
+        >
           <span class="mb-1">{{ channelName }}</span>
         </BaseTooltip>
 
-        <BaseTooltip text="Verified" top>
-          <BaseIcon name="check" class="h-3.5 w-3.5 ml-1" />
+        <BaseTooltip text="Verified"
+          top
+        >
+          <BaseIcon name="check"
+            class="h-3.5 w-3.5 ml-1"
+          />
         </BaseTooltip>
       </div>
 

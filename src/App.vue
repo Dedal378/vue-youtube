@@ -50,6 +50,8 @@ onMounted(() => {
   </div>
   <TheSidebarCompact v-if="isCompactSidebarOpen" />
   <TheSidebar v-if="isSidebarOpen" />
-  <TheSidebarMobile @close="closeMobileSidebar" :is-open="isMobileSidebarOpen" />
+  <TheSidebarMobile @close="closeMobileSidebar"
+    :is-open="isMobileSidebarOpen"
+  />
   <TheVideos :is-sidebar-open="isSidebarOpen" />
 </template>

@@ -11,7 +11,7 @@ const listItems = reactive([
   { label: 'Trending', icon: 'trending', isActive: false },
   { label: 'Subscriptions', icon: 'subscriptions', isActive: false },
   { label: 'Library', icon: 'library', isActive: false },
-  { label: 'History', icon: 'history', isActive: false },
+  { label: 'History', icon: 'history', isActive: false }
 ])
 const listItemsBest = reactive([
   { label: 'Music', icon: 'music', isActive: false },
@@ -20,7 +20,7 @@ const listItemsBest = reactive([
   { label: 'Movies', icon: 'movies', isActive: false },
   { label: 'News', icon: 'news', isActive: false },
   { label: 'Live', icon: 'live', isActive: false },
-  { label: '360&deg; Video', icon: 'video360', isActive: false },
+  { label: '360&deg; Video', icon: 'video360', isActive: false }
 ])
 const listItemsMore = reactive([
   { label: 'Browse channels', icon: 'browseChannels', isActive: false },
@@ -29,7 +29,7 @@ const listItemsMore = reactive([
   { label: 'Settings', icon: 'settings2', isActive: false },
   { label: 'Report history', icon: 'report', isActive: false },
   { label: 'Help', icon: 'help2', isActive: false },
-  { label: 'Send feedback', icon: 'feedback2', isActive: false },
+  { label: 'Send feedback', icon: 'feedback2', isActive: false }
 ])
 </script>
 

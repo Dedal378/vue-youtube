@@ -14,7 +14,7 @@ const buttonClasses = computed(() => {
     'hover:text-gray-700',
     'focus:outline-none',
     'group-hover:opacity-100',
-    isOpen.value ? 'opacity-100' : 'opacity-0',
+    isOpen.value ? 'opacity-100' : 'opacity-0'
   ]
 })
 const dropdownClasses = computed(() => {
@@ -29,7 +29,7 @@ const dropdownClasses = computed(() => {
     'rounded',
     'shadow',
     'focus:outline-none',
-    ...positionClasses.value,
+    ...positionClasses.value
   ]
 })
 
@@ -129,10 +129,10 @@ onMounted(() => {
 <template>
   <div class="relative -mt-1 ml-auto">
     <button
+      ref="videoItemDropdownButton"
       @click="toggle"
       @keydown.esc="isOpen = false"
       :class="buttonClasses"
-      ref="videoItemDropdownButton"
     >
       <BaseIcon
         name="dotsVertical"
@@ -150,9 +150,9 @@ onMounted(() => {
     >
       <div
         v-show="isOpen"
+        ref="videoItemDropdown"
         @keydown.esc="isOpen = false"
         :class="dropdownClasses"
-        ref="videoItemDropdown"
         tabindex="-1"
       >
         <section class="py-2">

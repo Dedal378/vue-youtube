@@ -22,9 +22,9 @@ const selectMenu = (menuItem) => {
   <section class="py-2 border-b">
     <ul>
       <DropdownSettingsListItem
-        @click.stop="selectMenu(menuItem)"
         v-for="menuItem in menuItems.slice(0, 8)"
         :key="menuItem.label"
+        @click.stop="selectMenu(menuItem)"
         :icon="menuItem.icon"
         :label="menuItem.label"
         :with-sub-menu="menuItem.withSubMenu"

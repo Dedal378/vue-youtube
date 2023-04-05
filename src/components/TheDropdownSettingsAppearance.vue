@@ -29,9 +29,9 @@ const selectOption = (theme) => {
     </div>
     <ul>
       <DropdownSettingsListItem
-        @click.stop="selectOption({ id: themeIdx, text: theme })"
         v-for="(theme, themeIdx) in themes"
         :key="themeIdx"
+        @click.stop="selectOption({ id: themeIdx, text: theme })"
         :active="themeIdx === selectedOptions.theme.id"
         :label="theme"
       />

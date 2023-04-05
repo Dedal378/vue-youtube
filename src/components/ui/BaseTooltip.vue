@@ -42,7 +42,7 @@ const classes = reactive([
   'p-2',
   'absolute',
   'transform',
-  ...getPositionClasses(),
+  ...getPositionClasses()
 ])
 </script>
 
@@ -64,7 +64,9 @@ const classes = reactive([
       leave-from-class="opacity-100"
       leave-to-class="opacity-0"
     >
-      <div v-show="isShown" :class="classes">{{ text }}</div>
+      <div v-show="isShown"
+        :class="classes"
+      >{{ text }}</div>
     </transition>
   </div>
 </template>

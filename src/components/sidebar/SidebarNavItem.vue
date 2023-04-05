@@ -25,8 +25,12 @@ const iconClasses = computed(() => (props.isActive ? 'h-6 w-6 mr-6 text-red-500'
 
 <template>
   <li>
-    <a :class="classes" href="#">
-      <BaseIcon :name="icon" :class="iconClasses" />
+    <a :class="classes"
+      href="#"
+    >
+      <BaseIcon :name="icon"
+        :class="iconClasses"
+      />
       <span v-html="label"></span>
     </a>
   </li>

@@ -25,7 +25,7 @@ const classesSignIn = [
   'sm:space-x-3',
   'p-2',
   'sm:px-4',
-  isMobileSearchShown.value ? 'opacity-0' : 'opacity-100',
+  isMobileSearchShown.value ? 'opacity-0' : 'opacity-100'
 ]
 
 const closeMobileSearch = () => (isMobileSearchActive.value = false)

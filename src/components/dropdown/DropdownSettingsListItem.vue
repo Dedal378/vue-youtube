@@ -22,7 +22,7 @@ const props = defineProps({
   },
 })
 const isIconShown = computed(
-  () => props.active || (props.icon !== 'checkArr' && props.icon !== null),
+  () => props.active || (props.icon !== 'checkArr' && props.icon !== null)
 )
 const iconName = computed(() => (props.active ? 'checkArr' : props.icon))
 </script>

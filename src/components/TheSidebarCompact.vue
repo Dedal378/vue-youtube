@@ -7,7 +7,7 @@ const navItems = reactive([
   { label: 'Trending', icon: 'trending', isActive: false },
   { label: 'Subscriptions', icon: 'subscriptions', isActive: false },
   { label: 'Library', icon: 'library', isActive: false },
-  { label: 'History', icon: 'history', isActive: false },
+  { label: 'History', icon: 'history', isActive: false }
 ])
 const classes = computed(() => ['min-h-screen', 'overflow-auto', 'fixed', 'z-20', 'top-0', 'pt-14', 'bg-white'])
 </script>

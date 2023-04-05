@@ -25,7 +25,7 @@ const keywords = ref([
   'new york giants vs washington football live',
   'new york giants injury',
   'new york giants live stream',
-  'new york accent',
+  'new york accent'
 ])
 
 const updateSearchResults = () => {

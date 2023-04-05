@@ -28,7 +28,7 @@ const categories = ref([
   'Lives',
   'Streets',
   'Math',
-  'Programming',
+  'Programming'
 ])
 const classes = computed(() => [props.isSidebarOpen ? 'xl:pl-64' : 'md:pl-24'])
 </script>
