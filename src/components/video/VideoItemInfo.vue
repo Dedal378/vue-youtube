@@ -21,7 +21,7 @@ const summary = computed(() => {
   <div class="flex items-start mt-3">
     <img alt="image"
       class="mr-3 rounded-full w-9 h-9"
-      :src="`https://picsum.photos/seed/avatar${index}/68`"
+      :src="`https://loremflickr.com/720/404/paris,museum/all?lock=${index}`"
     >
 
     <div class="text-xs whitespace-nowrap">

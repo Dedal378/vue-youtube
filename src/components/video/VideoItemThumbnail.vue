@@ -13,7 +13,7 @@ defineProps({
   <div class="relative">
     <img
       alt="image"
-      :src="`https://picsum.photos/seed/image${index}/720/404`"
+      :src="`https://loremflickr.com/720/404/paris,museum/all?lock=${index}`"
     >
 
     <VideoItemThumbnailButton
